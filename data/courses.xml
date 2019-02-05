@@ -1,0 +1,13 @@
+<odoo>
+    <record model="open_academy.course" id="course_math">
+        <field name="name">Math 101</field>
+        <field name="level">easy</field>
+        <field name="description">Basics of Math</field>
+    </record>
+    
+    <record model="open_academy.course" id="course_physics">
+        <field name="name">Physics 101</field>
+        <field name="level">easy</field>
+        <field name="description">Basics of Physics</field>
+    </record>
+</odoo>
