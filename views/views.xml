@@ -21,20 +21,34 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <group>
-              <field name="name"/>
-              <field name="level"/>
+            <group col="12">
+              <field colspan="8" name="name"/>
+              <field colspan="4" name="level"/>
             </group>
             <group>
               <field name="instructor"/>
+              <field name="session_count"/>
+              <field name="session_ids"/>
             </group>
             <notebook>
               <page string="General Information">
-                <field name="name"/>
+                <field name="description"/>
               </page>
             </notebook>
           </sheet>
         </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_search_view">
+      <field name="name">Session Search</field>
+      <field name="model">open_academy.session</field>
+      <field name="arch" type="xml">
+        <search string="Session List">
+          <field name="course_name"/>
+          <field name="instructor"/>
+          <field name="start_time"/>
+        </search>
       </field>
     </record>
 
