@@ -16,6 +16,7 @@ class Course(models.Model):
         ],
         default='medium')
     instructor = fields.Many2one(string='Instructor', comodel_name='res.partner', requried=True)
+    instructor_name = fields.Char(string='Instructor Name', related='instructor.name')  # For use in Kanban card
     description = fields.Text(string='Description')
 
     session_ids = fields.One2many(comodel_name='open_academy.session', inverse_name='course_id')

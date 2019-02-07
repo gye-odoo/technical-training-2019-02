@@ -52,6 +52,42 @@
             </field>
         </record>
 
+        <record id="course_view_kanban" model="ir.ui.view">
+            <field name="name">open_academy.course.view.kanban</field>
+            <field name="model">open_academy.course</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="level">
+                    <field name="name"/>
+                    <field name="instructor"/>
+                    <field name="level"/>
+                    <field name="session_count"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click_edit
+                                               oe_semantic_html_override
+                                               oe_kanban_card">
+                                <button class="fa fa-trash pull-right btn btn-danger" type="delete"/>
+                                <div t-attf-class="oe_kanban_content">
+                                    <!-- title -->
+                                    <span style="font-weight: bold;">Name:</span>
+                                    <field name="name"/>
+                                    <br/>
+                                    <span style="font-weight: bold;">Instructor:</span>
+                                    <field name="instructor_name"/>
+                                    <br/>
+                                    <span style="font-weight: bold;">Difficulty:</span>
+                                    <field name="level"/>
+                                    <br/>
+                                    <span style="font-weight: bold;">Sessions:</span>
+                                    <field name="session_count"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="course_search_view">
             <field name="name">Course Search</field>
             <field name="model">open_academy.course</field>
@@ -69,7 +105,7 @@
         <record model="ir.actions.act_window" id="course_list">
             <field name="name">Courses</field>
             <field name="res_model">open_academy.course</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
         </record>
 
     </data>
