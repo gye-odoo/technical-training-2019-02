@@ -8,11 +8,54 @@
             <field name="priority" eval="16"/>
             <field name="arch" type="xml">
                 <tree string="Session List">
+                    <field name="name"/>
                     <field name="course_name"/>
                     <field name="instructor"/>
-                    <field name="start_date"/>
                     <field name="duration"/>
+                    <field name="state"/>
+                    <field name="attendee_count"/>
                 </tree>
+            </field>
+        </record>
+
+        <record id="session_view_form" model="ir.ui.view">
+            <field name="name">open_academy.session.view.form</field>
+            <field name="model">open_academy.session</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="course_id"/>
+                            <field name="instructor"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="duration"/>
+                        </group>
+                        <notebook>
+                            <page string="Attendees">
+                                <field name="attendee_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- open_academy.session calendar view -->
+        <record id="session_view_calendar" model="ir.ui.view">
+            <field name="name">open_academy.session.view.calendar</field>
+            <field name="model">open_academy.session</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar Description" date_start="start_date" mode="week">
+                    <field name="course_name"/>
+                    <field name="instructor"/>
+                    <field name="attendee_count"/>
+                </calendar>
             </field>
         </record>
 
@@ -23,7 +66,6 @@
                 <search string="Session List">
                     <field name="course_name"/>
                     <field name="instructor"/>
-                    <field name="duration"/>
                     <field name="state"/>
                 </search>
             </field>
@@ -32,7 +74,7 @@
         <record model="ir.actions.act_window" id="session_list">
             <field name="name">Sessions</field>
             <field name="res_model">open_academy.session</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
         </record>
 
     </data>

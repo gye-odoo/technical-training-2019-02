@@ -4,6 +4,20 @@
 
         <!-- View definitions -->
 
+        <record id="course_view_tree" model="ir.ui.view">
+            <field name="name">open_academy.course.view.tree</field>
+            <field name="model">open_academy.course</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="instructor"/>
+                    <field name="level"/>
+                    <field name="description"/>
+                    <field name="session_count"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="course_view_form">
             <field name="name">Course Form</field>
             <field name="model">open_academy.course</field>
@@ -11,18 +25,26 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <group col="12">
-                            <field colspan="8" name="name"/>
-                            <field colspan="4" name="level"/>
-                        </group>
                         <group>
+                            <field name="name"/>
                             <field name="instructor"/>
+                            <field name="level"/>
+                            <field name="description"/>
                             <field name="session_count"/>
-                            <field name="session_ids"/>
                         </group>
                         <notebook>
-                            <page string="General Information">
-                                <field name="description"/>
+                            <page string="Sessions">
+                                <!-- Note: Adding a new tree view for session in this form view
+                                           so that course name is not displayed (since we're only
+                                           displaying sessions for the current course) -->
+                                <field name="session_ids">
+                                    <tree>
+                                        <field name="instructor"/>
+                                        <field name="duration"/>
+                                        <field name="state"/>
+                                        <field name="attendee_count"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>

@@ -7,12 +7,15 @@ class Course(models.Model):
     _description = 'This model contains relevant information about each course.'
 
     name = fields.Char(string='Name', required=True)
-    level = fields.Selection(string='Difficulty', selection=[
-        ('easy', 'Easy'),
-        ('medium', 'Medium'),
-        ('hard', 'Hard'),
-    ])
-    instructor = fields.Many2one(string='Instructor', comodel_name='res.partner')
+    level = fields.Selection(
+        string='Difficulty',
+        selection=[
+            ('easy', 'Easy'),
+            ('medium', 'Medium'),
+            ('hard', 'Hard'),
+        ],
+        default='medium')
+    instructor = fields.Many2one(string='Instructor', comodel_name='res.partner', requried=True)
     description = fields.Text(string='Description')
 
     session_ids = fields.One2many(comodel_name='open_academy.session', inverse_name='course_id')
