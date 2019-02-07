@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <!-- View definitions -->
+
+        <record model="ir.ui.view" id="course_view_form">
+            <field name="name">Course Form</field>
+            <field name="model">open_academy.course</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="12">
+                            <field colspan="8" name="name"/>
+                            <field colspan="4" name="level"/>
+                        </group>
+                        <group>
+                            <field name="instructor"/>
+                            <field name="session_count"/>
+                            <field name="session_ids"/>
+                        </group>
+                        <notebook>
+                            <page string="General Information">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="course_search_view">
+            <field name="name">Course Search</field>
+            <field name="model">open_academy.course</field>
+            <field name="arch" type="xml">
+                <search string="Course List">
+                    <field name="name"/>
+                    <field name="level"/>
+                    <field name="instructor"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Actions -->
+
+        <record model="ir.actions.act_window" id="course_list">
+            <field name="name">Courses</field>
+            <field name="res_model">open_academy.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="session_view_list">
+            <field name="name">Session List</field>
+            <field name="model">open_academy.session</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Session List">
+                    <field name="course_name"/>
+                    <field name="instructor"/>
+                    <field name="start_date"/>
+                    <field name="duration"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="session_search_view">
+            <field name="name">Session Search</field>
+            <field name="model">open_academy.session</field>
+            <field name="arch" type="xml">
+                <search string="Session List">
+                    <field name="course_name"/>
+                    <field name="instructor"/>
+                    <field name="duration"/>
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="session_list">
+            <field name="name">Sessions</field>
+            <field name="res_model">open_academy.session</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
