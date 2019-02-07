@@ -4,9 +4,7 @@ from odoo import models, fields, api
 
 class Course(models.Model):
     _name = 'open_academy.course'
-    _description = """
-    The course model defines attributes about individual courses.
-"""
+    _description = 'This model contains relevant information about each course.'
 
     name = fields.Char(string='Name', required=True)
     level = fields.Selection(string='Difficulty', selection=[

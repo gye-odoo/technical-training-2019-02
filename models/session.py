@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 
 class Session(models.Model):
     _name = 'open_academy.session'
+    _description = 'This model contains relevant information about each session. Multiple sessions can belong to a course.'
 
     instructor = fields.Many2one(string='Instructor', comodel_name='res.partner')
     start_date = fields.Datetime(string='Start Date')
