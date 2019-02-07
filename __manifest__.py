@@ -28,6 +28,7 @@
         'views/course_views.xml',
         'views/session_views.xml',
         'views/menu_views.xml',
+        'wizards/add_attendees_views.xml',
         'data/courses.xml',
     ],
     # only loaded in demonstration mode
