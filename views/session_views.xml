@@ -24,6 +24,26 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
+                        <!-- Confirm button, appears only in "draft" state (set to invisible in other states) -->
+                        <button string="Confirm"
+                                type="object"
+                                name="action_confirm"
+                                attrs="{'invisible': [('state', 'in', ['confirmed', 'done'])]}"
+                                confirm="Are you sure?"
+                                class="oe_highlight"/>
+                        <!-- Return to Draft button, appears only in "confirmed" state (set to invisible in other states) -->
+                        <button string="Return to Draft"
+                                type="object"
+                                name="action_draft"
+                                attrs="{'invisible': [('state', 'in', ['draft', 'done'])]}"
+                                confirm="Are you sure?"/>
+                        <!-- Mark as Done button, appears only in "confirmed" state (set to invisible in other states) -->
+                        <button string="Mark as Done"
+                                type="object"
+                                name="action_done"
+                                attrs="{'invisible': [('state', 'in', ['draft', 'done'])]}"
+                                confirm="Are you sure?"
+                                class="oe_highlight"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>

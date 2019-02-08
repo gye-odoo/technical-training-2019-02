@@ -40,3 +40,12 @@ class Session(models.Model):
     def _compute_attendee_count(self):
         for record in self:
             record.attendee_count = len(record.attendee_ids)
+
+    def action_confirm(self):
+        self.state = 'confirmed'
+
+    def action_draft(self):
+        self.state = 'draft'
+
+    def action_done(self):
+        self.state = 'done'
